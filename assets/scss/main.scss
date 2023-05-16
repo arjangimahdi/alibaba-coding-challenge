@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: "gilroy";
+}
+
+.element-scheme-dark {
+    --text: #ffffff;
+    --background: #2b3945;
+    --body-background: #202d36;
+}
+.element-scheme-light {
+    --text: #111517;
+    --background: #ffffff;
+    --body-background: #f1f1f1;
+}
