@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-between items-center">
-        <app-input size="lg" id="email" v-model="email" placeholder="Enter your email">
+        <app-input size="lg" id="email" v-model="email" placeholder="Search for a country...">
             <template #prepend> <i class="icon-search"></i> </template>
         </app-input>
 
@@ -12,6 +12,7 @@
             v-model:option="selectedRegion"
         />
     </div>
+    <div></div>
 </template>
 
 <script setup lang="ts">

@@ -1,5 +1,5 @@
 <template>
-    <div class="app-header w-full px-4 py-5 bg-element_scheme_background text-element_scheme_text">
+    <header class="app-header w-full px-4 py-5 bg-element_scheme_background text-element_scheme_text">
         <!-- TODO - fix the shadow issue -->
         <div class="container mx-auto">
             <div class="app-header-inner flex justify-between items-center">
@@ -10,7 +10,7 @@
                 </app-button>
             </div>
         </div>
-    </div>
+    </header>
 </template>
 
 <script setup lang="ts">

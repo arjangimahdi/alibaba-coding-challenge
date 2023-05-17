@@ -4,13 +4,13 @@
         :class="[isDark ? 'element-scheme-dark' : 'element-scheme-light']"
     >
         <app-header title="Where in the world?" @toggle-dark-mode="toggleDark" />
-        <div class="default-layout-outer bg-body_scheme_background">
+        <main class="default-layout-outer bg-body_scheme_background">
             <div class="container mx-auto py-10">
                 <div class="default-layout-inner overflow-y-auto">
                     <slot />
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 </template>
 
