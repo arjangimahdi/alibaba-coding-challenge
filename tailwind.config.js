@@ -13,6 +13,7 @@ module.exports = {
                 element_scheme_text: "var(--text)",
                 element_scheme_background: "var(--background)",
                 body_scheme_background: "var(--body-background)",
+                element_scheme_placeholder: "var(--placeholder-text)",
             },
         },
     },

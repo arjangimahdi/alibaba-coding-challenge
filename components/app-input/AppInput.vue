@@ -1,6 +1,6 @@
 <template>
     <div
-        class="app-input bg-element_scheme_background text-element_scheme_text"
+        class="app-input bg-element_scheme_background text-element_scheme_placeholder"
         :class="[
             `size-${size}`,
             invalid ? 'invalid' : '',
@@ -22,7 +22,7 @@
             @input="InputHandler"
             :placeholder="placeholder"
             :class="[appendSeparator(), prependSeparator()]"
-            class="bg-element_scheme_background text-element_scheme_text placeholder-element_scheme_text"
+            class="bg-element_scheme_background text-element_scheme_text placeholder-element_scheme_placeholder"
         />
 
         <!-- TODO - change placeholder color to #858585 -->
