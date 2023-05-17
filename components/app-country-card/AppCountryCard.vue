@@ -1,7 +1,7 @@
 <template>
     <article class="app-country-card rounded-md overflow-hidden text-element_scheme_text bg-element_scheme_background">
         <div class="app-country-card-image">
-            <img :src="image" class="w-full aspect-[4/3]"/>
+            <img :src="image" class="w-full aspect-[16/9]"/>
         </div>
         <div class="p-6">
             <div class="app-country-card-title mb-3">
