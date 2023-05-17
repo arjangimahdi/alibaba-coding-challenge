@@ -34,8 +34,6 @@
 </template>
 
 <script setup lang="ts">
-import { useSlots } from "vue";
-
 export interface Props {
     id: string;
     modelValue: string;
