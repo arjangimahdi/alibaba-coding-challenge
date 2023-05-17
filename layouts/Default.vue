@@ -15,10 +15,16 @@
 </template>
 
 <script setup lang="ts">
-import { useDark, useToggle } from "@vueuse/core";
+const isDark = ref<boolean>(false);
 
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
+onMounted(() => {
+    isDark.value = localStorage.getItem("color-scheme") === "dark";
+});
+
+function toggleDark() {
+    localStorage.setItem("color-scheme", isDark.value ? "light" : "dark");
+    isDark.value = !isDark.value;
+}
 
 provide("isDark", isDark);
 </script>
