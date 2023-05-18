@@ -1,6 +1,12 @@
 <template>
     <div class="flex justify-between items-center">
-        <app-input size="lg" id="email" v-model="email" placeholder="Search for a country...">
+        <app-input
+            size="lg"
+            id="search"
+            v-model="search"
+            placeholder="Search for a country..."
+            @update:model-value="searchInCountries"
+        >
             <template #prepend> <i class="icon-search"></i> </template>
         </app-input>
 
@@ -32,7 +38,7 @@
 import { storeToRefs } from "pinia";
 import { useAppStore } from "~/store/app-store";
 
-const email = ref<string>("");
+const search = ref<string>("");
 const selectedRegion = ref<string>("");
 const regions = reactive<string[]>(["Americas", "Oceania", "Asia", "Africa", "Europe"]);
 
@@ -41,6 +47,10 @@ const store = useAppStore();
 const { countries } = storeToRefs(store);
 
 useAsyncData("store", () => store.getAllCountries());
+
+function searchInCountries() {
+    store.filterCountries(search.value);
+}
 </script>
 
 <style scoped></style>
