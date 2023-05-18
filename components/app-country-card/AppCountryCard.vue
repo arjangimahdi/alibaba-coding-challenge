@@ -1,9 +1,9 @@
 <template>
     <article
-        class="app-country-card rounded-md overflow-hidden text-element_scheme_text bg-element_scheme_background shadow-lg"
+        class="app-country-card rounded-md overflow-hidden text-element_scheme_text bg-element_scheme_background shadow-lg hover:cursor-pointer"
     >
         <div class="app-country-card-image">
-            <nuxt-img :src="image" class="w-full aspect-[16/9]" />
+            <nuxt-img loading="lazy" :src="image" class="w-full aspect-[16/9]" />
         </div>
         <div class="p-6">
             <div class="app-country-card-title mb-3">
@@ -30,8 +30,6 @@
 </template>
 
 <script setup lang="ts">
-import { join } from "path";
-
 export interface Props {
     capital: string[];
     image: string;

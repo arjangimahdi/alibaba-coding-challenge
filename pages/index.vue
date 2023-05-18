@@ -1,8 +1,9 @@
 <template>
-    <div class="flex justify-between items-center">
+    <section class="flex justify-between items-center">
         <app-input
             size="lg"
             id="search"
+            type="text"
             v-model="search"
             placeholder="Search for a country..."
             @update:model-value="searchInCountries"
@@ -18,8 +19,8 @@
             v-model:option="selectedRegion"
             @update:option="filterByRegion"
         />
-    </div>
-    <div class="countries-list pt-10">
+    </section>
+    <section class="countries-list pt-10">
         <div class="grid grid-cols-4 gap-10">
             <app-country-card
                 v-if="countries.length > 0"
@@ -33,12 +34,17 @@
                 @click="goToCountryDetail(country)"
             />
         </div>
-    </div>
+    </section>
 </template>
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useAppStore } from "~/store/app-store";
+
+useHead({
+    title: "Countries List",
+    meta: [{ name: "description", content: "World wide countries are listed here." }],
+});
 
 const search = ref<string>("");
 const selectedRegion = ref<string>("");
@@ -49,7 +55,11 @@ const store = useAppStore();
 
 const { countries } = storeToRefs(store);
 
-useAsyncData("store", () => store.getAllCountries());
+const isLoading = ref<boolean>(true);
+
+await useAsyncData("store", () => store.getAllCountries()).then(() => {
+    isLoading.value = false;
+});
 
 function searchInCountries() {
     store.filterCountries(search.value);
@@ -57,7 +67,7 @@ function searchInCountries() {
 function filterByRegion() {
     store.filterCountriesByRegion(selectedRegion.value);
 }
-function goToCountryDetail(country) {
+function goToCountryDetail(country: Country) {
     const id = country.ccn3;
     router.push({
         path: `/${id}`,

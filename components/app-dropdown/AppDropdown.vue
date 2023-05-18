@@ -16,16 +16,11 @@
             </span>
             <i :class="isOpen ? 'icon-chevron-up' : 'icon-chevron-down'"></i>
         </div>
-        <div class="app-dropdown-dropdown bg-element_scheme_background text-element_scheme_placeholder" v-show="isOpen">
-            <div class="app-dropdown-search" v-if="searchable">
-                <input
-                    type="text"
-                    autocomplete="off"
-                    id="app-dropdown-search"
-                    @input="searchOptionsHandler"
-                    placeholder="Search in options"
-                />
-            </div>
+        <div
+            class="app-dropdown-dropdown bg-element_scheme_background text-element_scheme_placeholder"
+            :class="isOpen ? 'shadow-lg' : ''"
+            v-show="isOpen"
+        >
             <div class="app-dropdown-dropdown-inner" v-if="options.length > 0">
                 <div
                     :key="item[keyName]"
@@ -65,10 +60,6 @@ export default {
         placeholder: {
             type: String,
         },
-        searchable: {
-            type: Boolean,
-            default: false,
-        },
     },
     computed: {
         hasCustomItem() {
@@ -90,14 +81,6 @@ export default {
             this.isOpen = false;
             this.selectedOption = option;
             this.$emit("update:option", option);
-        },
-        searchOptionsHandler(e) {
-            const regex = new RegExp(e.target.value, "gi");
-            this.options = this.items.filter((option) => {
-                if (option[this.name].search(regex) > -1) {
-                    return option;
-                }
-            });
         },
         focusChangeHandler(e) {
             if (e.type == "focus" && e.relatedTarget === null) {

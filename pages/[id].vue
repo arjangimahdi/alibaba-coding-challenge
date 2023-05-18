@@ -1,13 +1,13 @@
 <template>
     <div class="flex justify-start items-start pt-10">
-        <app-button class="font-semibold w-32 h-10 rounded-md shadow-md" @click="goBack">
+        <app-button class="font-semibold w-32 h-10 rounded-md shadow-md" size="md" @click="goBack">
             <template #prepend> <i class="icon-arrow-left"></i> </template>
             Back
         </app-button>
     </div>
     <div class="grid grid-cols-2 gap-28 mt-20 text-element_scheme_text">
         <div class="country-flag">
-            <nuxt-img :src="country.flags.png" class="w-full aspect-[9/6]" />
+            <nuxt-img loading="lazy" :src="country.flags.png" class="w-full aspect-[10/6]" />
         </div>
         <div class="country-info flex flex-col justify-center items-start">
             <h2 class="text-3xl font-bold mb-10">
@@ -64,7 +64,7 @@
                         class="mx-1"
                         @click="goToCountryDetail(_country)"
                     >
-                        <app-button class="text-sm rounded-md shadow-md">
+                        <app-button class="text-sm rounded-md shadow-md" size="md">
                             {{ _country.name.common }}
                         </app-button>
                     </li>
@@ -77,6 +77,11 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useAppStore } from "~/store/app-store";
+
+useHead({
+    title: "Countries Detail",
+    meta: [{ name: "description", content: "" }],
+});
 
 const route = useRoute();
 const router = useRouter();

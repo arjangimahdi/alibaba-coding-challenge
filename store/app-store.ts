@@ -1,11 +1,13 @@
+import { Country } from "./../types/country.type";
 import _ from "lodash";
+import type { Country, BorderCountry } from "~/types/country.type";
 import { fetchAllCountries, fetchCountryBorders, fetchCountryByCode } from "~/api/app-api";
 
 export const useAppStore = defineStore("app-store", {
     state: () => ({
-        allCountries: [],
-        countries: [],
-        country: {},
+        allCountries: <Country[]>[],
+        countries: <Country[]>[],
+        country: <Country>{},
         borderCountries: [],
     }),
     getters: {
@@ -32,7 +34,7 @@ export const useAppStore = defineStore("app-store", {
             return currencies.join(",");
         },
         getLanguages() {
-            const languages = [];
+            const languages: string[] = [];
 
             _.each(this.country.languages, (lang) => {
                 languages.push(lang);
@@ -41,11 +43,9 @@ export const useAppStore = defineStore("app-store", {
             return languages.join(", ");
         },
         getCountryBorders() {
-            const borderCountries = [];
+            const borderCountries: BorderCountry[] = [];
 
-            _.each(this.borderCountries, (country) => {
-                console.log(country);
-
+            _.each(this.borderCountries, (country: Country) => {
                 borderCountries.push({
                     ccn3: country.ccn3,
                     name: country.name,
@@ -59,11 +59,7 @@ export const useAppStore = defineStore("app-store", {
         async getAllCountries() {
             const { error, data } = await fetchAllCountries();
             if (data) {
-                this.countries = _.sortBy(data.value, [
-                    function (country) {
-                        return country.population;
-                    },
-                ]).reverse();
+                this.countries = _.sortBy(data.value, ["population"]).reverse();
                 this.allCountries = data.value;
             }
         },
@@ -87,11 +83,7 @@ export const useAppStore = defineStore("app-store", {
                     return country;
                 }
             });
-            this.countries = _.sortBy(filteredCountries, [
-                function (country) {
-                    return country.population;
-                },
-            ]).reverse();
+            this.countries = _.sortBy(filteredCountries, ["population"]).reverse();
         },
         filterCountriesByRegion(region: string) {
             this.countries = _.filter(this.allCountries, ["region", region]);

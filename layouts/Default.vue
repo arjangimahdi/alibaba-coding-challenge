@@ -1,4 +1,5 @@
 <template>
+    <NuxtLoadingIndicator />
     <div
         class="default-layout h-screen bg-body_scheme_background overflow-hidden"
         :class="[isDark ? 'element-scheme-dark' : 'element-scheme-light']"
