@@ -1,12 +1,12 @@
 <template>
     <div
-        class="default-layout h-screen overflow-hidden"
+        class="default-layout h-screen bg-body_scheme_background overflow-hidden"
         :class="[isDark ? 'element-scheme-dark' : 'element-scheme-light']"
     >
         <app-header title="Where in the world?" @toggle-dark-mode="toggleDark" />
-        <main class="default-layout-outer bg-body_scheme_background">
-            <div class="container mx-auto py-10">
-                <div class="default-layout-inner overflow-y-auto">
+        <main class="default-layout-outer">
+            <div class="container mx-auto">
+                <div class="default-layout-inner py-8 my-4 px-4 overflow-y-auto scrollable">
                     <slot />
                 </div>
             </div>

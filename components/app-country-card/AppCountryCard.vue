@@ -1,7 +1,9 @@
 <template>
-    <article class="app-country-card rounded-md overflow-hidden text-element_scheme_text bg-element_scheme_background">
+    <article
+        class="app-country-card rounded-md overflow-hidden text-element_scheme_text bg-element_scheme_background shadow-lg"
+    >
         <div class="app-country-card-image">
-            <img :src="image" class="w-full aspect-[16/9]"/>
+            <nuxt-img :src="image" class="w-full aspect-[16/9]" />
         </div>
         <div class="p-6">
             <div class="app-country-card-title mb-3">
@@ -19,7 +21,7 @@
                     </li>
                     <li class="text-sm mb-2">
                         <span class="font-medium">Capital: </span>
-                        <span class="font-light">{{ capital.join(', ') }}</span>
+                        <span class="font-light">{{ capital ? capital.join(",") : "" }}</span>
                     </li>
                 </ul>
             </div>
@@ -28,19 +30,21 @@
 </template>
 
 <script setup lang="ts">
+import { join } from "path";
+
 export interface Props {
-    capital: string[],
+    capital: string[];
     image: string;
     title: string;
-    region: string,
-    population: number,
+    region: string;
+    population: number;
 }
 
 const props = defineProps<Props>();
 
 const _population = computed(() => {
     return props.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-})
+});
 </script>
 
 <style lang="scss">

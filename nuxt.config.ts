@@ -6,7 +6,7 @@ export default defineNuxtConfig({
             autoprefixer: {},
         },
     },
-    modules: ["@pinia/nuxt"],
+    modules: ["@pinia/nuxt", "@nuxt/image-edge"],
     pinia: {
         autoImports: [
             // automatically imports `defineStore`

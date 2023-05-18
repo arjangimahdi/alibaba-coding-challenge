@@ -18,3 +18,20 @@
     --body-background: #f1f1f1;
     --placeholder-text: #858585;
 }
+
+.scrollable {
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background: rgba($color: #000000, $alpha: 0.04);
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #a8a8ba;
+        border-radius: 4px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: #868695;
+    }
+}
