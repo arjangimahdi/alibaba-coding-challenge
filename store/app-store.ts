@@ -1,4 +1,4 @@
-import { sortBy } from "lodash";
+import { sortBy, filter } from "lodash";
 import { fetchAllCountries } from "~/api/app-api";
 
 export const useAppStore = defineStore("app-store", {
@@ -6,10 +6,6 @@ export const useAppStore = defineStore("app-store", {
         allCountries: [],
         countries: [],
     }),
-    getters: {
-        // getCountriesList() {
-        // }
-    },
     actions: {
         async getAllCountries() {
             const { error, data } = await fetchAllCountries();
@@ -23,7 +19,7 @@ export const useAppStore = defineStore("app-store", {
             }
         },
         async filterCountries(query: string) {
-            const filteredCountries = this.allCountries.filter((country) => {
+            const filteredCountries = filter(this.allCountries, (country) => {
                 const pattern = query
                     .split("")
                     .map((x) => {
@@ -41,6 +37,9 @@ export const useAppStore = defineStore("app-store", {
                     return country.population;
                 },
             ]).reverse();
+        },
+        filterCountriesByRegion(region: string) {
+            this.countries = filter(this.allCountries, ["region", region]);
         },
     },
 });

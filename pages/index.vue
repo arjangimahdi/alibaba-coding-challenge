@@ -16,6 +16,7 @@
             :searchable="false"
             placeholder="Filter by region"
             v-model:option="selectedRegion"
+            @update:option="filterByRegion"
         />
     </div>
     <div class="countries-list pt-10">
@@ -50,6 +51,9 @@ useAsyncData("store", () => store.getAllCountries());
 
 function searchInCountries() {
     store.filterCountries(search.value);
+}
+function filterByRegion() {
+    store.filterCountriesByRegion(selectedRegion.value);
 }
 </script>
 
