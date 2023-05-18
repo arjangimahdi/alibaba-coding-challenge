@@ -30,6 +30,7 @@
                 :population="country.population"
                 :image="country.flags.png"
                 :title="country.name.common"
+                @click="goToCountryDetail(country)"
             />
         </div>
     </div>
@@ -43,6 +44,7 @@ const search = ref<string>("");
 const selectedRegion = ref<string>("");
 const regions = reactive<string[]>(["Americas", "Oceania", "Asia", "Africa", "Europe"]);
 
+const router = useRouter();
 const store = useAppStore();
 
 const { countries } = storeToRefs(store);
@@ -54,6 +56,12 @@ function searchInCountries() {
 }
 function filterByRegion() {
     store.filterCountriesByRegion(selectedRegion.value);
+}
+function goToCountryDetail(country) {
+    const id = country.ccn3;
+    router.push({
+        path: `/${id}`,
+    });
 }
 </script>
 

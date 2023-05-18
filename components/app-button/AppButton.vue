@@ -1,5 +1,8 @@
 <template>
-    <button class="app-button flex justify-center items-center" :class="[`size-${size}`, flat ? 'flat' : '']">
+    <button
+        class="app-button flex justify-center items-center text-element_scheme_text bg-element_scheme_background"
+        :class="[`size-${size}`, flat ? 'flat' : '']"
+    >
         <div class="app-button-prepend-icon mr-2" v-if="hasPrepend">
             <slot name="prepend" />
         </div>

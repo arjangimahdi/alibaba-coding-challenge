@@ -4,7 +4,7 @@
         <div class="container mx-auto">
             <div class="app-header-inner flex justify-between items-center">
                 <span class="text-xl font-extrabold">{{ title }}</span>
-                <app-button @click="emit('toggle-dark-mode')" class="font-semibold">
+                <app-button @click="emit('toggle-dark-mode')" class="font-semibold" flat>
                     <template #prepend> <i :class="isDark ? 'icon-sun' : 'icon-moon'"></i> </template>
                     Dark Mode
                 </app-button>
