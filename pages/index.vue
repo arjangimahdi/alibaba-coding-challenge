@@ -25,7 +25,7 @@
             <app-country-card
                 v-if="countries.length > 0"
                 v-for="country in countries"
-                :key="country.cca3"
+                :key="country.ccn3"
                 :capital="country.capital"
                 :region="country.region"
                 :population="country.population"
@@ -40,6 +40,7 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useAppStore } from "~/store/app-store";
+import type { BorderCountry } from "~/types/country.type";
 
 useHead({
     title: "Countries List",
@@ -67,7 +68,7 @@ function searchInCountries() {
 function filterByRegion() {
     store.filterCountriesByRegion(selectedRegion.value);
 }
-function goToCountryDetail(country: Country) {
+function goToCountryDetail(country: BorderCountry) {
     const id = country.ccn3;
     router.push({
         path: `/${id}`,

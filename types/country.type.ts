@@ -1,7 +1,7 @@
 interface CountryName {
     common: string;
     official: string;
-    nativeName: any;
+    nativeName: { [key: string]: { [key: string]: string } };
 }
 
 export interface Country {
@@ -13,6 +13,11 @@ export interface Country {
     subregion: string;
     languages: { [key: string]: string };
     independent: boolean;
+    population: number;
+    currencies: { [key: string]: { [key: string]: string } };
+    capital: string[];
+    flags: { [key: string]: string };
+    borders: string[];
 }
 
 export interface BorderCountry {

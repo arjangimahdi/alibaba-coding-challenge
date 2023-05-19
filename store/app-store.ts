@@ -1,4 +1,3 @@
-import { Country } from "./../types/country.type";
 import _ from "lodash";
 import type { Country, BorderCountry } from "~/types/country.type";
 import { fetchAllCountries, fetchCountryBorders, fetchCountryByCode } from "~/api/app-api";
@@ -24,7 +23,7 @@ export const useAppStore = defineStore("app-store", {
             return this.country.capital.join(",");
         },
         getCurrencies(): string {
-            const currencies = [];
+            const currencies: string[] = [];
             if (!_.isEmpty(this.country.currencies)) {
                 _.each(this.country.currencies, ({ name }) => {
                     currencies.push(name);
@@ -33,7 +32,7 @@ export const useAppStore = defineStore("app-store", {
 
             return currencies.join(",");
         },
-        getLanguages() {
+        getLanguages(): string {
             const languages: string[] = [];
 
             _.each(this.country.languages, (lang) => {
@@ -42,7 +41,7 @@ export const useAppStore = defineStore("app-store", {
 
             return languages.join(", ");
         },
-        getCountryBorders() {
+        getCountryBorders(): BorderCountry[] {
             const borderCountries: BorderCountry[] = [];
 
             _.each(this.borderCountries, (country: Country) => {
@@ -56,20 +55,20 @@ export const useAppStore = defineStore("app-store", {
         },
     },
     actions: {
-        async getAllCountries() {
+        async getAllCountries(): Promise<any> {
             const { error, data } = await fetchAllCountries();
             if (data) {
                 this.countries = _.sortBy(data.value, ["population"]).reverse();
                 this.allCountries = data.value;
             }
         },
-        async getCountryByCode(code: string) {
+        async getCountryByCode(code: string): Promise<any> {
             const { error, data } = await fetchCountryByCode(code);
             if (data) {
                 this.country = data.value[0];
             }
         },
-        async filterCountries(query: string) {
+        async filterCountries(query: string): Promise<any> {
             const filteredCountries = _.filter(this.allCountries, (country) => {
                 const pattern = query
                     .split("")
@@ -85,10 +84,10 @@ export const useAppStore = defineStore("app-store", {
             });
             this.countries = _.sortBy(filteredCountries, ["population"]).reverse();
         },
-        filterCountriesByRegion(region: string) {
+        filterCountriesByRegion(region: string): void {
             this.countries = _.filter(this.allCountries, ["region", region]);
         },
-        async getBorderCountries(borders: string[]) {
+        async getBorderCountries(borders: string[]): Promise<any> {
             const codes = _.take(borders, 3).join(",");
 
             const { error, data } = await fetchCountryBorders(codes);

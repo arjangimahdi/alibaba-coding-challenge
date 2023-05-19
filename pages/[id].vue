@@ -77,6 +77,7 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useAppStore } from "~/store/app-store";
+import type { BorderCountry } from "~/types/country.type";
 
 useHead({
     title: "Countries Detail",
@@ -85,7 +86,7 @@ useHead({
 
 const route = useRoute();
 const router = useRouter();
-const id = route.params.id;
+const id: string | string[] = route.params.id;
 
 const store = useAppStore();
 
@@ -100,7 +101,7 @@ const {
     getCountryBorders,
 } = storeToRefs(store);
 
-await useAsyncData("store", () => store.getCountryByCode(id));
+if (id.constructor === String) await useAsyncData("store", () => store.getCountryByCode(id));
 await useAsyncData("store", () => store.getBorderCountries(country.value.borders));
 
 function goBack() {
@@ -109,7 +110,7 @@ function goBack() {
     });
 }
 
-function goToCountryDetail(country) {
+function goToCountryDetail(country: BorderCountry) {
     const id = country.ccn3;
     router.push({
         path: `/${id}`,
