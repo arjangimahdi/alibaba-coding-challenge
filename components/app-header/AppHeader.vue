@@ -5,7 +5,7 @@
             <div class="app-header-inner flex justify-between items-center">
                 <span class="text-xl font-extrabold">{{ title }}</span>
                 <app-button @click="emit('toggle-dark-mode')" class="font-semibold" size="md" flat>
-                    <template #prepend> <i :class="isDark ? 'icon-sun' : 'icon-moon'"></i> </template>
+                    <template #prepend> <i :class="_isDark ? 'icon-sun' : 'icon-moon'"></i> </template>
                     Dark Mode
                 </app-button>
             </div>
@@ -14,6 +14,9 @@
 </template>
 
 <script setup lang="ts">
+import { inject, ref } from "vue";
+import AppButton from "../app-button/AppButton.vue";
+
 interface Header {
     title: string;
 }
@@ -27,6 +30,8 @@ const emit = defineEmits<{
 }>();
 
 const isDark = inject("isDark");
+
+const _isDark = ref(isDark);
 </script>
 
 <style lang="scss">

@@ -1,6 +1,7 @@
 import _ from "lodash";
-import type { Country, BorderCountry } from "~/types/country.type";
-import { fetchAllCountries, fetchCountryBorders, fetchCountryByCode } from "~/api/app-api";
+import { defineStore } from "pinia";
+import type { Country, BorderCountry } from "./../types/country.type";
+import { fetchAllCountries, fetchCountryBorders, fetchCountryByCode } from "./../api/app-api";
 
 export const useAppStore = defineStore("app-store", {
     state: () => ({

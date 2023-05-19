@@ -12,6 +12,8 @@
 </template>
 
 <script setup lang="ts">
+import { useSlots, computed } from "vue";
+
 export interface Props {
     size: string;
     flat: boolean;

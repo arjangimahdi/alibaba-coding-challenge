@@ -3,7 +3,7 @@
         class="app-input bg-element_scheme_background text-element_scheme_placeholder"
         :class="[`size-${size}`, hasAppend() ? 'has-append' : '', hasPrepend() ? 'has-prepend' : '']"
     >
-        <div v-if="hasPrepend()" class="app-input-prepend" @click="prependClickHandler">
+        <div v-if="hasPrepend()" class="app-input-prepend">
             <slot name="prepend" />
         </div>
 
@@ -17,15 +17,15 @@
             class="bg-element_scheme_background text-element_scheme_text placeholder-element_scheme_placeholder"
         />
 
-        <!-- TODO - change placeholder color to #858585 -->
-
-        <div v-if="hasAppend()" class="app-input-append" @click="appendClickHandler">
+        <div v-if="hasAppend()" class="app-input-append">
             <slot name="append" />
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import { useSlots } from "vue";
+
 export interface Props {
     id: string;
     modelValue: string;
@@ -53,12 +53,12 @@ function hasPrepend() {
 function InputHandler(event: Event) {
     emit("update:modelValue", (event.target as HTMLInputElement).value);
 }
-function appendClickHandler(event: Event) {
-    emit("append-click", event);
-}
-function prependClickHandler(event: Event) {
-    emit("prepend-click", event);
-}
+// function appendClickHandler(event: Event) {
+//     emit("append-click", event);
+// }
+// function prependClickHandler(event: Event) {
+//     emit("prepend-click", event);
+// }
 </script>
 
 <style lang="scss">

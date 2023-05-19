@@ -41,8 +41,8 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { useAppStore } from "~/store/app-store";
-import type { BorderCountry } from "~/types/country.type";
+import { useAppStore } from "./../store/app-store";
+import type { BorderCountry } from "./../types/country.type";
 
 useHead({
     title: "Countries List",
