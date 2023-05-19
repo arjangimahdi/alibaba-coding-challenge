@@ -1,42 +1,14 @@
-# Nuxt 3 Minimal Starter
+<div style="text-align: center;">
+  <br />
+  <br />
+  <h1>Countries List Project</h1>
+  <div style="text-align: center">
+    <h3><a href="">Demo</a></h3>
+  </div>
+  <div style="text-align: center">
+    <h2>Alibaba Coding Challenge (Frontend - Nuxt.js)</h2>
+  </div>
+  
+</div>
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+<p>This is project about world wide countries and some stats about them, and you can see details such as <strong>population</strong> </p>
