@@ -1,19 +1,19 @@
 <template>
-    <div class="flex justify-start items-start pt-10">
+    <div class="flex justify-start items-start sm:pt-10 pt-0">
         <app-button class="font-semibold w-32 h-10 rounded-md shadow-md" size="md" @click="goBack">
             <template #prepend> <i class="icon-arrow-left"></i> </template>
             Back
         </app-button>
     </div>
-    <div class="grid grid-cols-2 gap-28 mt-20 text-element_scheme_text">
-        <div class="country-flag">
+    <div class="grid sm:grid-cols-2 grid-cols-1 sm:gap-28 gap-0 mt-20 text-element_scheme_text sm:pb-0 pb-10">
+        <div class="country-flag sm:mb-0 mb-10">
             <nuxt-img loading="lazy" :src="country.flags.png" class="w-full aspect-[10/6]" />
         </div>
         <div class="country-info flex flex-col justify-center items-start">
             <h2 class="text-3xl font-bold mb-10">
                 {{ country.name.common }}
             </h2>
-            <div class="grid grid-cols-2 gap-10 w-full mb-10">
+            <div class="grid sm:grid-cols-2 grid-cols-1 gap-10 w-full mb-10">
                 <div>
                     <ul>
                         <li class="mb-3">
@@ -55,8 +55,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="flex items-center">
-                <span class="font-semibold mr-3">Border Countries: </span>
+            <div class="flex sm:flex-row flex-col sm:items-center items-start">
+                <span class="font-semibold mr-3 sm:mb-0 mb-5">Border Countries: </span>
                 <ul class="flex">
                     <li
                         v-for="_country in getCountryBorders"

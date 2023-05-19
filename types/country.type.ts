@@ -12,7 +12,6 @@ export interface Country {
     region: string;
     subregion: string;
     languages: { [key: string]: string };
-    independent: boolean;
     population: number;
     currencies: { [key: string]: { [key: string]: string } };
     capital: string[];

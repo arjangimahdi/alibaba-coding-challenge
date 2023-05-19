@@ -1,10 +1,11 @@
 <template>
-    <section class="flex justify-between items-center">
+    <section class="flex sm:flex-row flex-col justify-between sm:items-center items-start">
         <app-input
             size="lg"
             id="search"
             type="text"
             v-model="search"
+            class="sm:w-auto w-full sm:mb-0 mb-10"
             placeholder="Search for a country..."
             @update:model-value="searchInCountries"
         >
@@ -21,8 +22,9 @@
         />
     </section>
     <section class="countries-list pt-10">
-        <div class="grid grid-cols-4 gap-10">
+        <div class="grid sm:grid-cols-4 grid-cols-1 sm:gap-10 gap-0">
             <app-country-card
+                class="sm:mb-0 mb-10"
                 v-if="countries.length > 0"
                 v-for="country in countries"
                 :key="country.ccn3"

@@ -19,8 +19,10 @@ export const useAppStore = defineStore("app-store", {
         getTopLevelDomain(): string {
             return this.country.tld.join(",");
         },
-        getCapital(): string {
-            return this.country.capital.join(",");
+        getCapital(): string | undefined {
+            if (this.country.capital) {
+                return this.country.capital.join(",");
+            }
         },
         getCurrencies(): string {
             const currencies: string[] = [];
