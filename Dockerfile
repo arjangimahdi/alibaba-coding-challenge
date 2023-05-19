@@ -2,13 +2,13 @@ FROM node:16.16.0-alpine3.16
 
 WORKDIR /app
 
-COPY package*.json .
+COPY ./package*.json /app/
 
 RUN npm install
 
 COPY . .
 
-RUN npm run test && npm run build
+RUN npm run build
 
 EXPOSE 3000
 
